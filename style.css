@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap');
+
+:root{
+    --White: hsl(0, 0%, 100%);
+    --Very-light-grayish-blue: hsl(210, 60%, 98%);
+    --Light-grayish-blue-1: hsl(211, 68%, 94%);
+    --Light-grayish-blue-2: hsl(205, 33%, 90%);
+    --Grayish-blue: hsl(219, 14%, 63%);
+    --Dark-grayish-blue: hsl(219, 12%, 42%);
+    --Very-dark-blue: hsl(224, 21%, 14%);
+    --Red: hsl(1, 90%, 64%);
+    --Blue: hsl(219, 85%, 26%);
+}
+
+*,
+*::after,
+*::before{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--Light-grayish-blue-2);
+}
+
+.container{
+    margin: 20px auto;
+    background-color: var(--White);
+    max-width: 700px;
+    display: grid;
+    padding: 10px 30px;
+    gap: 10px;
+    border-radius: 15px;
+    grid-template-rows: repeat(7, minmax(200px));
+}
+
+.container > :nth-child(6)::after{
+    content: "";
+    display: block;
+    background: url("assets/images/image-chess.webp") no-repeat right center ;
+    background-size: contain;
+    min-width: 50px;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    margin-left: 20%;
+}
+
+.unread{
+    font-size: 0.9rem;
+    color: var(--Dark-grayish-blue);
+    font-weight: 500;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 800;
+    align-items: center;
+}
+
+.header .highlight{
+    background-color: var(--Blue);
+    padding: 3px 14px;
+    font-size: 1rem;
+    border-radius: 5px;
+    color: var(--White);
+}
+
+.header h1{
+    display: flex;
+    gap: 20px;
+    font-size: 1.5rem;
+}
+
+.notification{
+    display: flex;
+    gap: 15px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.notification.active{
+    background-color: var(--Very-light-grayish-blue);
+}
+
+.notification.active h2 .important::after{
+    content: "";
+    width: 8px;
+    position: relative;
+    right: -100%;
+    top: -10px;
+    height: 8px;
+    background-color: var(--Red);
+    border-radius: 100%;
+    display: flex;
+    margin-left: 10px;
+}
+
+.notification.open{
+    display: flex;
+    flex-direction: column;
+}
+
+.notification .header{
+    display: flex;
+    gap: 15px;
+    align-self: flex-start;
+}
+
+.notification img{
+    height: 60px;
+}
+
+.notification h2{
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.notification {
+    color: var(--Dark-grayish-blue);
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.notification .time{
+    color: var(--Grayish-blue);
+    font-weight: 500;
+}
+
+.notification h2 .name{
+    font-weight: 800;
+    color: black;
+}
+
+.notification .name:hover{
+    color: var(--Blue);
+}
+
+.notification h2 .important{
+    font-weight: 800;
+    color: var(--Dark-grayish-blue);
+}
+
+.notification h2 .important.chess{
+    color: var(--Blue);
+    font-weight: 800;
+}
+
+.notification .message{
+    border-radius: 10px;
+    border: 1px solid var(--Light-grayish-blue-2);
+    padding: 15px;
+    max-width: 500px;
+    font-size: 0.9rem;
+    display: none;
+}
+
+.notification .message:hover{
+    background-color: var(--Light-grayish-blue-1);
+}
+
+.notification .message p{
+    margin: 0;
+}
+
+@media(max-width:500px) {
+    body{
+        background-color: var(--White);
+    }
+    .container{
+        border-radius: 0;
+        margin: 0;
+    }
+    .notification img{
+        height: 40px;
+    }
+    .notification.active h2 .important::after{
+        right: -90%;
+    }
+    .notification h2{
+        font-size: 0.8rem;
+    }
+    .notification .message{
+        font-size: 0.8rem;
+    }
+}
